@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+  	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+  	<script src="lib/js/jquery-3.2.1.min.js"></script>
+  	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  	<script src="lib/js/MC.js"></script>
+</head>
+<body>
+<form class="form-horizontal">
+<div class="container">
+<div class="panel-group">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3>Mortgage Calculator</h3>
+		</div>
+		<div class="panel-body">
+			<!-- <form class="form-horizontal"> -->
+			<div class="row">
+				<div class="form-group has-feedback">
+					<label class="control-label col-md-2" for="fixedrate">Quoted Rate
+					<i class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="The rate you got from consultant or ads."></i>:</label>
+					<div class="col-md-3">
+						<input type="text" class="form-control" id="fixedrate">
+						<span class="glyphicon form-control-feedback">%</span>
+					</div>
+					<label class="control-label col-md-2" for="amortization">Amortization
+					<i class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="How long the mortgage will last. Ex. 25 years, input 25"></i>:</label>
+					<div class="col-md-3">
+						<input type="text" class="form-control" id="amortization">
+						<span class="glyphicon glyphicon-hourglass form-control-feedback"></span>
+					</div>
+				</div>
+			</div>
+			<!--</form>
+			<form class="form-horizontal">-->
+			<div class="row">
+				<div class="form-group">
+					<label class="control-label col-md-2" for="totalprice">Total Price
+					<i class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Asking price. If buying NEW, input price before tax."></i>:</label>
+					<div class="col-md-3">
+						<div class="input-group">
+							<span class="input-group-addon">C$</span>
+							<input type="text" class="form-control" id="totalprice" placeholder="Owned/New">
+							<div class="input-group-btn">
+								<button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+								<span id="purchasetype"></span>
+								<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><input type="radio" name="purchasetype" value="1"/>Owned</li>
+									<li><input type="radio" name="purchasetype" value="1.14975"/>New</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<label class="control-label col-md-2" for="downpayment">Down Payment
+					<i class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="The Amount or Percentage you pay without borrowing from lender."></i>:</label>
+					<div class="col-md-3">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="choose $ or %" id="downpayment">
+							<div class="input-group-btn">
+								<button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+								<span id="downpaymenttype"></span>
+								<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><input type="radio" name="downpaymenttype" value="D"/>$</li>
+									<li><input type="radio" name="downpaymenttype" value="P"/>%</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="text-right col-md-7">
+					<input type="button" id="calculate" class="btn btn-info" value="Calculate"/>
+					<input type="reset" id="reset" class="btn btn-link" value="Reset" />
+				</div>
+			</div>
+			<!-- </form> -->
+		</div>
+	</div>
+	<div id="detail" class="panel panel-info" style="display:none;">
+		<div class="panel-heading">
+			<h3>Calculated Amounts</h3>
+		</div>
+		<div class="panel-body">
+			<!-- <form class="form-horizontal"> -->
+			<div class="row">
+				<div class="form-group">
+					<label class="control-label col-md-2" for="principal">Principal
+					<i class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="How much money you will borrown from lender."></i>:</label>
+					<div class="col-md-3">
+						<p class="form-control-static" id="principal">
+							<!--<small><i class="glyphicon glyphicon-usd"></i></small>501,291-->
+						</p>
+					</div>
+					<div class="col-md-2 text-right">
+						<button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						<span id="paymentType">Monthly</span>
+						<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><input type="radio" name="paymentType" value="12"/>Monthly</li>
+							<li><input type="radio" name="paymentType" value="26"/>Bi-Weekly</li>
+							<li><input type="radio" name="paymentType" value="52"/>Weekly</li>
+							<!--<li><input type="radio" name="paymentType" value="6"/>Bi-Monthly</li>
+							<li><input type="radio" name="paymentType" value="24"/>Semi-Monthly</li>-->
+						</ul>
+						<label class="control-label" for="monthlypay"> Pay
+						<i class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="The Amount you pay every selected term."></i>:</label>
+					</div>
+					<div class="col-md-3">
+						<p class="form-control-static" id="monthlypay">
+							<!--<small><i class="glyphicon glyphicon-usd"></i></small>-->
+						</p>
+						<!-- <span class="help-block">This help block</span> -->
+					</div>
+				</div>
+			</div>
+			<!--</form>
+			<form class="form-horizontal">-->
+			<div class="row">
+				<div class="form-group">
+					<label class="control-label col-md-2" for="ear">EAR
+					<i class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Effective Annual Rate: semi-annually Compounded rate based on Quoted Rate."></i>:</label>
+					<div class="col-md-3">
+						<p class="form-control-static" id="ear"></p>
+					</div>
+					<div class="col-md-2 text-right">
+						<label class="control-lable" id="paymentTypeRate"></label>
+						<label class="control-label" for="monthlyrate"> Rate
+						<i class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="Rate get compounded periodly and result in EAR."></i>:</label>
+					</div>
+					<div class="col-md-3">
+						<p class="form-control-static" id="monthlyrate"></p>
+					</div>
+				</div>
+			</div>
+			<!-- </form> -->
+		</div>
+		<div class="panel-footer">
+			<h5 class="text-info"><span class="text-danger">*</span>The amounts and values shown in this page are calculated based on user input. The amounts and values may vary with the ones from banks or agents.</h5>
+		</div>
+	</div>
+</div>
+</div>
+</form>
+</body>
+</html>

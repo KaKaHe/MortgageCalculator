@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<!--<script src="jQuery/jquery-3.2.1.js"></script>-->
+  	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+<ul class="nav navbar-nav">
+	<li><a href="#">List 1</a></li>
+	<li><a href="#">List 2</a></li>
+	<li class="active"><a href="#">Active</a></li>
+</ul>
+</nav>
+<div class="container">
+<a href="#" data-toggle="tooltip" title="Hooray!">Hover on me</a>
+<button type="button" class="btn btn-success" data-toggle="collapse" data-toggle="tooltip" title="This is a tooptip@!" data-target="#all">Open</button>
+<div id="all" class="collapse">
+<table class="table">
+	<tr>
+		<td class="info">
+		</td>
+		<td class="warning">
+		<div class="jumbotron">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4">
+						<p>Glyohicon test of <span class="glyphicon glyphicon-road"></span></p>
+					</div>
+					<div class="col-sm-3" style="background-color:yellow">col-sm-4</div>
+					<div class="col-sm-5" style="background-color:lavender">col-sm-4</div>
+				</div>
+				<!--
+				<h1>This is a Bootstrap testing page.</h1>
+				<p>I should input some text here, mais je ne sais pas quoi entr�e.</p>
+				-->
+			</div>
+		</div>
+		</td>
+		<td class="info">
+		</td>
+	</tr>
+</table>
+
+<div class="container">
+	<ul class="pager">
+		<li class="previous"><a href="#">&lt;Previous</a></li>
+		<li class="next"><a href="#">Next&gt;</a></li>
+	</ul>
+</div>
+
+<div class="panel panel-success">
+<div class="panel-heading">
+This is a Panel Head.
+</div>
+<div class="panel-body">
+This is a Panel.
+</div>
+</div>
+</div>
+</div>
+
+  	<script>
+  		$(document).ready(function(){
+  			$('[data-toggle="tooltip"]').tooltip();
+  		});
+  	</script>
+</body>
+</html>
